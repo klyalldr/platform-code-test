@@ -1,4 +1,4 @@
-# tf-roo-test
+# platform-code-test
 
 A live coding to test for potential platform engineers.
 
@@ -24,8 +24,21 @@ Then you can source this file before running any commands.
 A simple [Makefile](Makefile) is provided for running some common commands:
 
 ```BASH
-# Run terraform plan
+# Run terraform plan, runs against production by default
 make tf-plan
 # Run terraform apply
 make tf-apply
+# Run terraform cmds against the common env
+make tf-plan ENV=common
+make tf-apply ENV=common
 ```
+
+## Environments
+
+### Production
+
+This is where the candidate will be working during the test, it should be destroyed and recreated between tests.
+
+### Common
+
+This contains resources that should persist between tests, will need to be applied before the production env
